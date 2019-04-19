@@ -1,10 +1,29 @@
 package org.uqbar.arena.kotlin.extensions
 
+import java.lang.reflect.Field
 import org.uqbar.arena.widgets.Control
 import org.uqbar.lacar.ui.model.ControlBuilder
 import org.uqbar.lacar.ui.model.bindings.Binding
 import org.uqbar.arena.bindings.ObservableProperty
 
+
+var Control.width: Int?
+    get() = null
+    set(value) {
+        value?.let { this.setWidth(it) }
+    }
+
+var Control.height: Int?
+    get() = null
+    set(value) {
+        value?.let { this.setHeight(it) }
+    }
+
+/**
+ * Infix functions
+ */
+
+infix fun Control.bind(paramName: String) = bindToProp(paramName)
 
 /**
  * Align

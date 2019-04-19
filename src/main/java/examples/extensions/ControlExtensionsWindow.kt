@@ -1,4 +1,4 @@
-package examples
+package examples.extensions
 
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel

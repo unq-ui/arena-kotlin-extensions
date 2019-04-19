@@ -12,8 +12,19 @@ import org.uqbar.arena.widgets.SkinnableControl
  */
 
 val bgField: Field = SkinnableControl::class.java.getDeclaredField("background")
+val fgField: Field = SkinnableControl::class.java.getDeclaredField("foreground")
 
-var SkinnableControl.background: Color
+var SkinnableControl.background: Color?
+    set(value) {
+        bgField.isAccessible = true
+        bgField.set(this, value)
+    }
+    get() {
+        bgField.isAccessible = true
+        return bgField.get(this) as Color
+    }
+
+var SkinnableControl.foreground: Color?
     set(value) {
         bgField.isAccessible = true
         bgField.set(this, value)

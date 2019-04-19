@@ -8,6 +8,20 @@ import org.uqbar.lacar.ui.model.WidgetBuilder
 import org.uqbar.lacar.ui.model.bindings.Binding
 
 /**
+ * Infix functions
+ */
+
+infix fun Label.props(block: (Label) -> Unit) = block(this)
+infix fun Label.with(block: (Label) -> Unit) = block(this)
+
+/**
+ * Infix functions
+ */
+
+infix fun Label.bindImg(paramName: String) = bindImageToProp(paramName)
+
+
+/**
  * Text extension (make it public)
  *  - setter
  *  - getter
@@ -33,3 +47,5 @@ var Label.text: String
 
 fun Label.bindImageToProp(propertyName: String): Binding<*, Widget, WidgetBuilder> =
     this.bindImageToProperty<String>(propertyName) { prop -> Image(prop) }
+
+
