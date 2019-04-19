@@ -1,3 +1,5 @@
+![Under Development](https://img.shields.io/badge/-under%20development-important.svg)
+
 # Kotlin Extensions for Arena Framework
 
 
@@ -7,8 +9,6 @@
 * [Repository](https://github.com/uqbar-project/arena)
 
 ## About this repository
-
-> **Under development** 
 
 In order to use Arena with Kotlin in a more pleasant way,
 here are some extensions that can help.
