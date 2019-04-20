@@ -13,107 +13,129 @@
 In order to use Arena with Kotlin in a more pleasant way,
 here are some extensions that can help.
 
-## Examples of use
+## How to use
 
-### AppModel using for testing components
+There are two ways to use Arena with this Kotlin package: extensions only or with native components.
 
-```kotlin
-@Observable
-class ExampleAppModel {
-    var labelText = "Soy un texto para un Label"
-    var textBoxText = "Soy un texto para un TextBox"
-    var enabled: Boolean = true
-    var disabled: Boolean = !enabled
-    var orange = Color.ORANGE
-    var blue = Color.blue
-    var image = "uqbar-arena-logo.png"
+### Extensions
+
+The first approach was to create some extensions to write components y a less verbose way.
+
+If you use Arena in kotlin directly, you should write code like this:
+
+```kt
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.MainWindow
+
+class ExampleWindow(model: AppModel) : MainWindow<AppModel>(model) {
+  override fun createContents(mainPanel: Panel) {
+    title = "Example" 
+
+    Label(mainPanel)
+        .setText("Soy un label")
+        .bindBackgroundToProperty<ControlBuilder, Any, Any>("bg")
+
+    TextBox(mainPanel)
+        .bindValueToProperty<Double, ControlBuilder>("number")
+  }
 }
 ```
 
-### All common abstract Control
+Sometimes Kotlin can't infer types of generics, so you need to write it explicitly,
+making code with a lot of verbosity.
 
-```kotlin
-import org.uqbar.arena.kotlin.extensions.*
+In order to improve this, extensions can help to wrap this code with a little best syntax.
 
-fun main () = ControlExtensionsWindow(ExampleAppModel()).startApplication()
+For example, these extensions for `Control` make code less verbose when you need to bind:
 
-/**
- * Control Extension Window
- */
-class ControlExtensionsWindow(model: ExampleAppModel) : MainWindow<ExampleAppModel>(model) {
-    override fun createContents(mainPanel: Panel) {
-        title = "Ejemplo de Extensiones para abstract class Control"
-
-        val label1 = Label(mainPanel)
-        label1.align("center")
-        label1.bindToProp("labelText")
-        label1.bindColorToProp("orange")
-
-        val label2 = Label(mainPanel)
-        label1.align("left")
-        label2.bindTo(modelObject, "labelText")
-        label2.bindColorTo(modelObject, "blue")
-
-        val textBox1 = TextBox(mainPanel)
-        textBox1.bindToProp("textBoxText")
-        textBox1.bindEnabledToProp("enabled")
-        textBox1.bindColorToProp("blue")
-
-        val textBox2 = TextBox(mainPanel)
-        textBox2.bindToProp("textBoxText")
-        textBox2.bindEnabledTo(modelObject, "disabled")
-        textBox2.bindColorTo(modelObject, "orange")
-
-        Label(mainPanel)
-                .setText("Alineado a la Derecha")
-                .align("rIghT")
-                .bindBackgroundToProp("orange")
-
-        Label(mainPanel)
-                .bindBackgroundTo(modelObject, "blue")
-
-        Label(mainPanel)
-                .setText("Soy un Label Visible")
-                .bindVisibleToProp("enabled")
-
-        Label(mainPanel)
-                .setText("Soy un Label Invisible")
-                .bindVisible(modelObject, "disabled")
-    }
-}
-```
-
-### All common abstract SkinnableControl
-
-```kotlin
-import org.uqbar.arena.kotlin.extensions.*
-
-class SkinnableControlExtensionsWindow(model: ExampleAppModel) : MainWindow<ExampleAppModel>(model) {
-    override fun createContents(mainPanel: Panel) {
-        title = "Ejemplo de Extensiones para abstract class SkinnableControl"
-
-        val firstLabel = Label(mainPanel)
-        firstLabel.background = Color.BLUE
-
-        val secondLabel = Label(mainPanel)
-        secondLabel.background = firstLabel.background
-    }
-}
-```
-
-### Label specific properties
-
-```kotlin
-import org.uqbar.arena.kotlin.extensions.*
-
-class LabelExtensionsWindow(model: ExampleAppModel) : MainWindow<ExampleAppModel>(model) {
-    override fun createContents(mainPanel: Panel) {
-        title = "Ejemplo de Extensiones para class Label"
-        val labelTxt = Label(mainPanel)
-        labelTxt.text = "Arena Framework by Uqbar"
+```kt
+infix fun Control.bindBackgroundTo(propertyName: String): Binding<*, Control, ControlBuilder> =
+        this.bindBackgroundToProperty<ControlBuilder, Any, Any>(propertyName)
         
-        val labelImg = Label(mainPanel)
-        labelImg.bindImageToProp("image")
+infix fun Control.bindBackgroundTo(propertyName: String): Binding<*, Control, ControlBuilder> =
+        this.bindBackgroundToProperty<ControlBuilder, Any, Any>(propertyName)
+```
+
+Now we can code like this: 
+
+```kt
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.kotlin.extensions.*
+
+class ExampleWindow(model: AppModel) : MainWindow<AppModel>(model) {
+  override fun createContents(mainPanel: Panel) {
+    title = "Example" 
+
+    Label(mainPanel)
+        .setText("Soy un label")
+        .bindBackgroundTo("bg")
+
+    TextBox(mainPanel).bindTo("number")
+  }
+}
+```
+
+But Kotlin allows to create
+[infix](https://kotlinlang.org/docs/reference/functions.html#infix-notation)
+functions, so we can rewrite that code as follow:
+
+```kt
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.kotlin.extensions.*
+
+class ExampleWindow(model: AppModel) : MainWindow<AppModel>(model) {
+  override fun createContents(mainPanel: Panel) {
+    title = "Example" 
+
+    val label = Label(mainPanel).setText("Soy un label")
+    label bindBackgroundTo "bg"
+    
+    TextBox(mainPanel) bindTo "number"
+  }
+}
+```
+
+To know how to use all Kotlin extensions for Arena, go to [Kotlin Extensions Page (TODO)](#).
+
+### Native Components
+
+To go a step further, we can wrap all components to get a better code syntax.
+
+Using [infix functions](https://kotlinlang.org/docs/reference/functions.html#infix-notation)
+and
+[high order functions](https://kotlinlang.org/docs/reference/lambdas.html)
+we can create a [DSL](https://en.wikipedia.org/wiki/Domain-specific_language)
+Syntax for Arena.
+
+So now we can write this kind of code
+
+```
+import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.kotlin.widgets.Panel
+import org.uqbar.arena.kotlin.widgets.Label
+import org.uqbar.arena.kotlin.widgets.TextBox
+
+class ExampleWindow(model: AppModel) : MainWindow<AppModel>(model) {
+  override fun createContents(mainPanel: Panel) {
+    title = "Example" 
+
+    // We can use any of this alternatives
+    Label(mainPanel) {
+        text = "Soy un label"
+        width(200)
+        it bindBackgroundTo "bg"
+        content color Color.BLUE
     }
+    
+    TextBox(mainPanel) bindTo "number"
+  }
 }
 ```
