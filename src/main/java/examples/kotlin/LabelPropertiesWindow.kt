@@ -5,12 +5,12 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.kotlin.widgets.Label
 
-fun main () = LabelExamplesWindow(KotlinAppModel()).startApplication()
+fun main () = LabelExamplesWindow(InternalAppModel()).startApplication()
 
 /**
  * Label Extension Window
  */
-class LabelExamplesWindow(model: KotlinAppModel) : MainWindow<KotlinAppModel>(model) {
+class LabelExamplesWindow(model: InternalAppModel) : MainWindow<InternalAppModel>(model) {
     override fun createContents(mainPanel: Panel) {
         title = "Ejemplos de uso de Label"
 

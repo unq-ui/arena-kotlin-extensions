@@ -22,4 +22,6 @@ class Label(panel: Panel) : SkinnableControl<UqLabel>(panel) {
     }
 
     infix fun text(string: String) { text = string }
+    infix fun bindImageTo(propName: String) = adapter bindImageTo propName
+    fun bindImageToModel(model: Any, propName: String) = adapter.bindImageToModel(model, propName)
 }

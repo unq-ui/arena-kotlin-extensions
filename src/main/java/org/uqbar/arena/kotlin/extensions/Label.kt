@@ -1,5 +1,7 @@
 package org.uqbar.arena.kotlin.extensions
 
+import org.uqbar.arena.bindings.ObservableProperty
+import org.uqbar.arena.bindings.observables.ViewObservables
 import java.lang.reflect.Field
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Widget
@@ -41,3 +43,10 @@ var Label.text: String
 
 infix fun Label.bindImageTo(propertyName: String): Binding<*, Widget, WidgetBuilder> =
         this.bindImageToProperty<String>(propertyName) { prop -> Image(prop) }
+
+fun Label.bindImageToModel(model: Any, propertyName: String): Binding<Any, Label, WidgetBuilder>? {
+    return this.addBinding(
+            ObservableProperty<Any>(model, propertyName),
+            ViewObservables.observableImage<Label, String>(this, { prop -> Image(prop) })
+    )
+}
