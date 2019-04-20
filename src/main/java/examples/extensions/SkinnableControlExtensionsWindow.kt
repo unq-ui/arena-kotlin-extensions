@@ -1,4 +1,4 @@
-package examples
+package examples.extensions
 
 import java.awt.Color
 import org.uqbar.arena.widgets.Panel

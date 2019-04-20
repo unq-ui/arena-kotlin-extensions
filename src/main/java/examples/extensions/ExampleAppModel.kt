@@ -1,10 +1,11 @@
-package examples
+package examples.extensions
 
 import org.uqbar.commons.model.annotations.Observable
 import java.awt.Color
 
 @Observable
 class ExampleAppModel {
+    var letText = "Soy un texto dentro del let"
     var labelText = "Soy un texto para un Label"
     var textBoxText = "Soy un texto para un TextBox"
     var enabled: Boolean = true

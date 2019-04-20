@@ -1,11 +1,21 @@
 package org.uqbar.arena.kotlin.extensions
 
+import org.uqbar.arena.bindings.ObservableProperty
+import org.uqbar.arena.bindings.observables.ViewObservables
 import java.lang.reflect.Field
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Widget
 import org.uqbar.arena.graphics.Image
 import org.uqbar.lacar.ui.model.WidgetBuilder
 import org.uqbar.lacar.ui.model.bindings.Binding
+
+/**
+ * Infix functions
+ */
+
+infix fun Label.props(block: (Label) -> Unit) = block(this)
+infix fun Label.with(block: (Label) -> Unit) = block(this)
+
 
 /**
  * Text extension (make it public)
@@ -31,5 +41,12 @@ var Label.text: String
  *  - bindBackgroundToProperty
  */
 
-fun Label.bindImageToProp(propertyName: String): Binding<*, Widget, WidgetBuilder> =
-    this.bindImageToProperty<String>(propertyName) { prop -> Image(prop) }
+infix fun Label.bindImageTo(propertyName: String): Binding<*, Widget, WidgetBuilder> =
+        this.bindImageToProperty<String>(propertyName) { prop -> Image(prop) }
+
+fun Label.bindImageToModel(model: Any, propertyName: String): Binding<Any, Label, WidgetBuilder>? {
+    return this.addBinding(
+            ObservableProperty<Any>(model, propertyName),
+            ViewObservables.observableImage<Label, String>(this, { prop -> Image(prop) })
+    )
+}
