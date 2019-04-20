@@ -6,7 +6,7 @@ import org.uqbar.arena.widgets.SkinnableControl
 
 
 /**
- * Background extension (make it public)
+ * Background & Foreground extension (making it public)
  *  - setter
  *  - getter
  */
@@ -26,11 +26,11 @@ var SkinnableControl.background: Color?
 
 var SkinnableControl.foreground: Color?
     set(value) {
-        bgField.isAccessible = true
-        bgField.set(this, value)
+        fgField.isAccessible = true
+        fgField.set(this, value)
     }
     get() {
-        bgField.isAccessible = true
+        fgField.isAccessible = true
         return bgField.get(this) as Color
     }
 

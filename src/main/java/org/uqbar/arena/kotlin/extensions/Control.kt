@@ -32,7 +32,7 @@ infix fun Control.bind(paramName: String) = bindToProp(paramName)
  *  - alignRight
  */
 
-fun Control.align(position: String): Control =
+infix fun Control.align(position: String): Control =
         when (position.toLowerCase()) {
             "left" -> this.alignLeft()
             "right" -> this.alignRight()
