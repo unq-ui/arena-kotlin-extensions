@@ -117,7 +117,7 @@ Syntax for Arena.
 
 So now we can write this kind of code
 
-```
+```kt
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.kotlin.widgets.Panel
 import org.uqbar.arena.kotlin.widgets.Label
