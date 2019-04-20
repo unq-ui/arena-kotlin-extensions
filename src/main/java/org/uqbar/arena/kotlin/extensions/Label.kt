@@ -14,12 +14,6 @@ import org.uqbar.lacar.ui.model.bindings.Binding
 infix fun Label.props(block: (Label) -> Unit) = block(this)
 infix fun Label.with(block: (Label) -> Unit) = block(this)
 
-/**
- * Infix functions
- */
-
-infix fun Label.bindImg(paramName: String) = bindImageToProp(paramName)
-
 
 /**
  * Text extension (make it public)
@@ -45,7 +39,5 @@ var Label.text: String
  *  - bindBackgroundToProperty
  */
 
-fun Label.bindImageToProp(propertyName: String): Binding<*, Widget, WidgetBuilder> =
-    this.bindImageToProperty<String>(propertyName) { prop -> Image(prop) }
-
-
+infix fun Label.bindImageTo(propertyName: String): Binding<*, Widget, WidgetBuilder> =
+        this.bindImageToProperty<String>(propertyName) { prop -> Image(prop) }

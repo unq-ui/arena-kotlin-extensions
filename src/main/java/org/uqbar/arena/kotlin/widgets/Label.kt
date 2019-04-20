@@ -4,6 +4,7 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Label as UqLabel
 import org.uqbar.arena.widgets.SkinnableControl as UqSkinnableControl
 import org.uqbar.arena.kotlin.extensions.*
+import org.uqbar.lacar.ui.model.ControlBuilder
 
 
 class Label(panel: Panel) : SkinnableControl<UqLabel>(panel) {

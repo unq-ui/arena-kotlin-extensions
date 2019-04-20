@@ -16,17 +16,17 @@ abstract class Control<U: UqControl>(private val panel: Panel) {
     var width: Int? = null
         set(value) {
             field = value
-            value?.let { adapter.width = it }
+            value?.let { adapter width it }
         }
     var height: Int? = null
         set(value) {
             field = value
-            value?.let { adapter.height = it }
+            value?.let { adapter height it }
         }
 
 
     infix fun width(size: Int) { width = size }
     infix fun height(size: Int) { height = size }
     infix fun align(position: String) { align = position }
-    infix fun bindTo(propName: String) = adapter.bindToProp(propName)
+    infix fun bindTo(propName: String) = adapter bindTo propName
 }

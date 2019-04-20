@@ -19,22 +19,22 @@ class LabelExtensionsWindow(model: ExampleAppModel) : MainWindow<ExampleAppModel
         labelTxt.text = "Arena Framework by Uqbar"
 
         val labelImg = Label(mainPanel)
-        labelImg.bindImageToProp("image")
+        labelImg.bindImageTo("image")
 
         Label(mainPanel).let {
-            it.bindToProp("letText")
+            it bindTo("letText")
             it.background = Color.MAGENTA
         }
 
         Label(mainPanel) with {
-            it bind "letText"
+            it bindTo "letText"
             it.background = Color.CYAN
         }
 
         Label(mainPanel) props { self ->
-            self bind "letText"
+            self bindTo "letText"
             self.background = Color.CYAN
-            self bindImg "image"
+            self bindImageTo "image"
         }
 
 

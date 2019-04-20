@@ -18,38 +18,38 @@ class ControlExtensionsWindow(model: ExampleAppModel) : MainWindow<ExampleAppMod
 
         val label1 = Label(mainPanel)
         label1.align("center")
-        label1.bindToProp("labelText")
-        label1.bindColorToProp("orange")
+        label1.bindTo("labelText")
+        label1.bindColorTo("orange")
 
         val label2 = Label(mainPanel)
         label2.align("left")
-        label2.bindTo(modelObject, "labelText")
-        label2.bindColorTo(modelObject, "blue")
+        label2.bindToModel(modelObject, "labelText")
+        label2.bindColorToModel(modelObject, "blue")
 
         val textBox1 = TextBox(mainPanel)
-        textBox1.bindToProp("textBoxText")
-        textBox1.bindEnabledToProp("enabled")
-        textBox1.bindColorToProp("blue")
+        textBox1.bindTo("textBoxText")
+        textBox1.bindEnabledTo("enabled")
+        textBox1.bindColorTo("blue")
 
         val textBox2 = TextBox(mainPanel)
-        textBox2.bindToProp("textBoxText")
-        textBox2.bindEnabledTo(modelObject, "disabled")
-        textBox2.bindColorTo(modelObject, "orange")
+        textBox2.bindTo("textBoxText")
+        textBox2.bindEnabledToModel(modelObject, "disabled")
+        textBox2.bindColorToModel(modelObject, "orange")
 
         Label(mainPanel)
                 .setText("Alineado a la Derecha")
                 .align("rIghT")
-                .bindBackgroundToProp("orange")
+                .bindBackgroundTo("orange")
 
-        Label(mainPanel).bindBackgroundTo(modelObject, "blue")
+        Label(mainPanel).bindBackgroundToModel(modelObject, "blue")
 
         Label(mainPanel)
                 .setText("Soy un Label Visible")
-                .bindVisibleToProp("enabled")
+                .bindVisibleTo("enabled")
 
         Label(mainPanel)
                 .setText("Soy un Label Invisible")
-                .bindVisible(modelObject, "disabled")
+                .bindVisibleToModel(modelObject, "disabled")
 
     }
 

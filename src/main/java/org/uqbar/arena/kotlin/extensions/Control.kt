@@ -1,6 +1,5 @@
 package org.uqbar.arena.kotlin.extensions
 
-import java.lang.reflect.Field
 import org.uqbar.arena.widgets.Control
 import org.uqbar.lacar.ui.model.ControlBuilder
 import org.uqbar.lacar.ui.model.bindings.Binding
@@ -19,11 +18,8 @@ var Control.height: Int?
         value?.let { this.setHeight(it) }
     }
 
-/**
- * Infix functions
- */
-
-infix fun Control.bind(paramName: String) = bindToProp(paramName)
+infix fun Control.width(size: Int) { width = size }
+infix fun Control.height(size: Int) { height = size }
 
 /**
  * Align
@@ -47,21 +43,21 @@ infix fun Control.align(position: String): Control =
  *  - bindBackgroundToProperty
  */
 
-fun Control.bindBackgroundTo(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindBackgroundToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindBackground<ControlBuilder, Any, Any>(ObservableProperty<Any>(model, propertyName))
 
-fun Control.bindBackgroundToProp(propertyName: String): Binding<*, Control, ControlBuilder> =
-    this.bindBackgroundToProperty<ControlBuilder, Any, Any>(propertyName)
+infix fun Control.bindBackgroundTo(propertyName: String): Binding<*, Control, ControlBuilder> =
+        this.bindBackgroundToProperty<ControlBuilder, Any, Any>(propertyName)
 
 /**
  * Binding Enabled
  *  - bindEnabled
  *  - bindEnabledToProperty
  */
-fun Control.bindEnabledTo(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindEnabledToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindEnabled<Any, ControlBuilder>(ObservableProperty(model, propertyName))
 
-fun Control.bindEnabledToProp(propertyName: String): Binding<*, Control, ControlBuilder> =
+infix fun Control.bindEnabledTo(propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindEnabledToProperty(propertyName)
 
 /**
@@ -70,17 +66,17 @@ fun Control.bindEnabledToProp(propertyName: String): Binding<*, Control, Control
  *  - bindForegroundToProperty
  */
 
-fun Control.bindForegroundTo(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindForegroundToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindForeground<ControlBuilder, Any, Any>(ObservableProperty<Any>(model, propertyName))
 
-fun Control.bindForegroundToProp(propertyName: String): Binding<*, Control, ControlBuilder> =
+infix fun Control.bindForegroundTo(propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindForegroundToProperty<ControlBuilder, Any, Any>(propertyName)
 
-fun Control.bindColorTo(model: Any, propertyName: String) =
-        this.bindForegroundTo(model, propertyName)
+fun Control.bindColorToModel(model: Any, propertyName: String) =
+        this.bindForegroundToModel(model, propertyName)
 
-fun Control.bindColorToProp(propertyName: String) =
-        this.bindForegroundToProp(propertyName)
+infix fun Control.bindColorTo(propertyName: String) =
+        this.bindForegroundTo(propertyName)
 
 
 /**
@@ -89,22 +85,22 @@ fun Control.bindColorToProp(propertyName: String) =
  *  - bindValueToProperty
  */
 
-fun Control.bindTo(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindValue<Any, ControlBuilder>(ObservableProperty(model, propertyName))
 
-fun Control.bindToProp(propertyName: String): Binding<*, Control, ControlBuilder> =
+infix fun Control.bindTo(propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindValueToProperty<Any, ControlBuilder>(propertyName)
 
 /**
  * Binding Visible
- *  - bindVisible
+ *  - bindVisibleToModel
  *  - bindVisibleToProperty
  */
 
-fun Control.bindVisible(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindVisibleToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindVisible<ControlBuilder>(ObservableProperty<Any>(model, propertyName))
 
-fun Control.bindVisibleToProp(propertyName: String): Binding<*, Control, ControlBuilder> =
+infix fun Control.bindVisibleTo(propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindVisibleToProperty<ControlBuilder>(propertyName)
 
 

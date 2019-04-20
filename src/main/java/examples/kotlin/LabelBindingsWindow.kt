@@ -30,7 +30,7 @@ bindValue
 bindEnabled
 bindImageToProperty
 bindEnabledToProperty
-bindVisible
+bindVisibleToModel
 bindVisibleToProperty
 bindBackground
 bindBackgroundToProperty

@@ -5,6 +5,6 @@ import org.uqbar.arena.widgets.tables.Table
 /**
  * Binding Items
  */
-fun Table<*>.bindItemsToProp(propertyName: String) =
+infix fun Table<*>.bindItemsTo(propertyName: String) =
         this.bindItemsToProperty(propertyName)
 
