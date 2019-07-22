@@ -15,80 +15,49 @@ here are some extensions that can help.
 
 ## How to use
 
-There are two ways to use Arena with this Kotlin package: extensions only or with native components.
+There are two ways to use Arena with this Kotlin package: **Extensions** and **Native Components**.
 
 ### Extensions
 
-The first approach was to create some extensions to write components y a less verbose way.
-
-If you use Arena in kotlin directly, you should write code like this:
+Using Arena without kotlin extensions result in code like this:
 
 ```kt
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.windows.MainWindow
-
 class ExampleWindow(model: AppModel) : MainWindow<AppModel>(model) {
   override fun createContents(mainPanel: Panel) {
     title = "Example" 
-
     Label(mainPanel)
         .setText("Soy un label")
         .bindBackgroundToProperty<ControlBuilder, Any, Any>("bg")
-
     TextBox(mainPanel)
         .bindValueToProperty<Double, ControlBuilder>("number")
   }
 }
 ```
 
-Sometimes Kotlin can't infer types of generics, so you need to write it explicitly,
+Because sometimes Kotlin can't infer types of generics, so you need to write generics explicitly,
 making code with a lot of verbosity.
 
-In order to improve this, extensions can help to wrap this code with a little best syntax.
-
-For example, these extensions for `Control` make code less verbose when you need to bind:
+With extensions you can create components in a less verbose way:
 
 ```kt
-infix fun Control.bindBackgroundTo(propertyName: String): Binding<*, Control, ControlBuilder> =
-        this.bindBackgroundToProperty<ControlBuilder, Any, Any>(propertyName)
-        
-infix fun Control.bindBackgroundTo(propertyName: String): Binding<*, Control, ControlBuilder> =
-        this.bindBackgroundToProperty<ControlBuilder, Any, Any>(propertyName)
-```
-
-Now we can code like this: 
-
-```kt
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.kotlin.extensions.*
 
 class ExampleWindow(model: AppModel) : MainWindow<AppModel>(model) {
   override fun createContents(mainPanel: Panel) {
     title = "Example" 
-
     Label(mainPanel)
         .setText("Soy un label")
         .bindBackgroundTo("bg")
-
     TextBox(mainPanel).bindTo("number")
   }
 }
 ```
 
-But Kotlin allows to create
-[infix](https://kotlinlang.org/docs/reference/functions.html#infix-notation)
-functions, so we can rewrite that code as follow:
+In addition, as Kotlin allows to create
+[infix functions](https://kotlinlang.org/docs/reference/functions.html#infix-notation),
+you can rewrite that code as follow:
 
 ```kt
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.kotlin.extensions.*
 
 class ExampleWindow(model: AppModel) : MainWindow<AppModel>(model) {
@@ -103,7 +72,7 @@ class ExampleWindow(model: AppModel) : MainWindow<AppModel>(model) {
 }
 ```
 
-To know how to use all Kotlin extensions for Arena, go to [Kotlin Extensions Page (TODO)](#).
+To know how to use all Kotlin extensions for Arena, go to [Kotlin Extensions Page](kotlin_extensions.md).
 
 ### Native Components
 

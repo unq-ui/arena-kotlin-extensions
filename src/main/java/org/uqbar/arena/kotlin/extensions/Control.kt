@@ -57,7 +57,7 @@ infix fun Control.bindBackgroundTo(propertyName: String): Binding<*, Control, Co
 fun Control.bindEnabledToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
         this.bindEnabled<Any, ControlBuilder>(ObservableProperty(model, propertyName))
 
-infix fun Control.bindEnabledTo(propertyName: String): Binding<*, Control, ControlBuilder> =
+infix fun Control.bindEnabledTo(propertyName: String): Binding<out Any, Control, ControlBuilder> =
         this.bindEnabledToProperty(propertyName)
 
 /**
@@ -105,7 +105,7 @@ infix fun Control.bindVisibleTo(propertyName: String): Binding<*, Control, Contr
 
 
 /**
- * Not Extensions for:
+ * Not Extensions needed for:
  *  - background
  *  - enabled
  *  - foreground
