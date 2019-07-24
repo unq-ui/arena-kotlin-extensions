@@ -1,4 +1,4 @@
-package examples.extensions.control.skinnableControl
+package examples.extensions.widget.control.skinnableControl
 
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Link

@@ -1,12 +1,10 @@
-package examples.extensions.control.skinnableControl
+package examples.extensions.widget.control.skinnableControl
 
 import org.uqbar.arena.Application
-import java.awt.Color
 import org.uqbar.arena.kotlin.extensions.*
 import org.uqbar.arena.widgets.*
 import org.uqbar.arena.windows.*
 import org.uqbar.commons.model.annotations.Observable
-import org.uqbar.commons.model.exceptions.UserException
 
 fun main() {
     class App : Application() {

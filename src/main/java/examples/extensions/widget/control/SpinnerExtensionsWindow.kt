@@ -1,4 +1,4 @@
-package examples.extensions.control.skinnableControl
+package examples.extensions.widget.control
 
 import org.uqbar.arena.kotlin.extensions.width
 import org.uqbar.arena.widgets.Panel
@@ -10,7 +10,7 @@ fun main () = SpinnerExtensionsWindow().startApplication()
 
 /**
  * Spinner Extension Window
- *  - inherits all common behavior from Control & SkinnableControl
+ *  - inherits all common behavior from Control
  *  - adds
  *      + minimumValue
  *      + maximumValue
