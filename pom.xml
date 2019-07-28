@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <repositories>
+        <repository>
+            <id>uqbar</id>
+            <name>Uqbar</name>
+            <url>http://maven.uqbar.org/releases/</url>
+        </repository>
+    </repositories>
+
     <parent>
         <groupId>org.uqbar-project</groupId>
         <artifactId>arena-xtend-parent</artifactId>
