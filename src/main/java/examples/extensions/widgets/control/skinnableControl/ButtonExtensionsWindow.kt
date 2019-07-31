@@ -1,4 +1,4 @@
-package examples.extensions.widget.control.skinnableControl
+package examples.extensions.widgets.control.skinnableControl
 
 import org.uqbar.arena.Application
 import java.awt.Color

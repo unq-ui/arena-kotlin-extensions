@@ -1,4 +1,4 @@
-package examples.extensions.widget
+package examples.extensions.widgets
 
 import org.uqbar.arena.kotlin.extensions.*
 import org.uqbar.arena.layout.HorizontalLayout

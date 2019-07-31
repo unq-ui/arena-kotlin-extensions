@@ -5,6 +5,9 @@ import org.uqbar.lacar.ui.model.ControlBuilder
 import org.uqbar.lacar.ui.model.bindings.Binding
 import org.uqbar.arena.bindings.ObservableProperty
 
+/**
+ * Accessors
+ */
 
 var Control.width: Int?
     get() = null
@@ -18,8 +21,11 @@ var Control.height: Int?
         value?.let { this.setHeight(it) }
     }
 
-infix fun Control.width(size: Int) { width = size }
-infix fun Control.height(size: Int) { height = size }
+var Control.align: String?
+    get() = null
+    set(value) {
+        value?.let { this.align(it) }
+    }
 
 /**
  * Align

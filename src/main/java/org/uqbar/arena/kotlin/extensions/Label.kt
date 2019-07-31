@@ -16,7 +16,6 @@ import org.uqbar.lacar.ui.model.bindings.Binding
 infix fun Label.props(block: (Label) -> Unit) = block(this)
 infix fun Label.with(block: (Label) -> Unit) = block(this)
 
-
 /**
  * Text extension (make it public)
  *  - setter

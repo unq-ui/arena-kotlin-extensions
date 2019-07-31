@@ -1,4 +1,4 @@
-package examples.extensions.widget.control.skinnableControl
+package examples.extensions.widgets.control.skinnableControl
 
 import java.awt.Color
 import org.uqbar.arena.widgets.Panel
@@ -57,7 +57,7 @@ class LabelExtensionsWindow : MainWindow<LabelExtensionsWindow.AppModel>(AppMode
         label1.bindColorTo("orange")
 
         val label2 = Label(mainPanel)
-        label2.align("left")
+        label2.align = "left"
         label2.bindToModel(modelObject, "labelText")
         label2.bindColorToModel(modelObject, "blue")
 

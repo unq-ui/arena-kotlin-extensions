@@ -1,4 +1,4 @@
-package examples.extensions.widget.control
+package examples.extensions.widgets.control
 
 import org.uqbar.arena.kotlin.extensions.width
 import org.uqbar.arena.widgets.Panel

@@ -1,4 +1,4 @@
-![Under Development](https://img.shields.io/badge/-under%20development-important.svg)
+[![](https://jitpack.io/v/unq-ui/arena-kotlin-extensions.svg)](https://jitpack.io/#unq-ui/arena-kotlin-extensions)
 
 # Kotlin Extensions for Arena Framework
 

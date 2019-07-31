@@ -1,6 +1,5 @@
 package org.uqbar.arena.kotlin.extensions
 
-import org.uqbar.arena.widgets.Control
 import java.awt.Color
 import java.lang.reflect.Field
 import org.uqbar.arena.widgets.SkinnableControl
