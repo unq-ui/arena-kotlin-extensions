@@ -30,7 +30,7 @@ class PanelExtensionWindow : MainWindow<PanelExtensionWindow.AppModel>(AppModel(
         Label(h1).text = "Label H1-2"
 
         val v1 = Panel(mainPanel)
-        v1.vertical()
+        v1.asVertical()
         val l = Label(v1)
         l.text = "Label V1-1"
         l.width = 200
@@ -38,12 +38,12 @@ class PanelExtensionWindow : MainWindow<PanelExtensionWindow.AppModel>(AppModel(
         Label(v1).text = "Label V1-2"
 
         val h2 = Panel(mainPanel)
-        h2.horizontal()
+        h2.asHorizontal()
         Label(h2).text = "Label H1-1"
         Label(h2).text = "Label H1-2"
 
         val c1 = Panel(mainPanel)
-        c1 columns 3
+        c1 asColumns 3
         Label(c1).text = "Label C1-1"
         Label(c1).text = "Label C1-2"
         Label(c1).text = "Label C1-3"

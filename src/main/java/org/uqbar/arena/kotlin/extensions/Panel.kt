@@ -24,17 +24,17 @@ var Panel.layout: Layout
         return panelLayoutField.get(this) as Layout
     }
 
-fun Panel.vertical(): Panel {
+fun Panel.asVertical(): Panel {
     this.layout = VerticalLayout()
     return this
 }
 
-fun Panel.horizontal(): Panel {
+fun Panel.asHorizontal(): Panel {
     this.layout = HorizontalLayout()
     return this
 }
 
-infix fun Panel.columns(num: Int): Panel {
+infix fun Panel.asColumns(num: Int): Panel {
     this.layout = ColumnLayout(num)
     return this
 }
