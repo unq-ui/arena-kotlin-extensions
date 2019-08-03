@@ -6,6 +6,16 @@ import org.uqbar.lacar.ui.model.bindings.Binding
 import org.uqbar.arena.bindings.ObservableProperty
 
 /**
+ * Functions to use component as Block
+ */
+
+infix fun <T: Control> T.with(block: T.(T) -> Unit): T {
+    this.block(this)
+    return this
+}
+infix fun <T: Control> T.props(block: T.(T) -> Unit): T = with(block)
+
+/**
  * Accessors
  */
 
