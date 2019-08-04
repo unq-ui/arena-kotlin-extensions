@@ -10,13 +10,6 @@ import org.uqbar.lacar.ui.model.WidgetBuilder
 import org.uqbar.lacar.ui.model.bindings.Binding
 
 /**
- * Infix functions
- */
-
-infix fun Label.props(block: (Label) -> Unit) = block(this)
-infix fun Label.with(block: (Label) -> Unit) = block(this)
-
-/**
  * Text extension (make it public)
  *  - setter
  *  - getter

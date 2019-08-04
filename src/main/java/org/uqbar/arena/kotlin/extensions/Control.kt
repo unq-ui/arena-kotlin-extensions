@@ -49,10 +49,10 @@ infix fun Control.align(position: String): Control =
  *  - bindBackgroundToProperty
  */
 
-fun Control.bindBackgroundToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindBackgroundToModel(model: Any, propertyName: String): ControlBinding =
         this.bindBackground<ControlBuilder, Any, Any>(ObservableProperty<Any>(model, propertyName))
 
-infix fun Control.bindBackgroundTo(propertyName: String): Binding<*, Control, ControlBuilder> =
+infix fun Control.bindBackgroundTo(propertyName: String): ControlBinding =
         this.bindBackgroundToProperty<ControlBuilder, Any, Any>(propertyName)
 
 /**
@@ -60,7 +60,7 @@ infix fun Control.bindBackgroundTo(propertyName: String): Binding<*, Control, Co
  *  - bindEnabled
  *  - bindEnabledToProperty
  */
-fun Control.bindEnabledToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindEnabledToModel(model: Any, propertyName: String): ControlBinding =
         this.bindEnabled<Any, ControlBuilder>(ObservableProperty(model, propertyName))
 
 infix fun Control.bindEnabledTo(propertyName: String): Binding<out Any, Control, ControlBuilder> =
@@ -72,10 +72,10 @@ infix fun Control.bindEnabledTo(propertyName: String): Binding<out Any, Control,
  *  - bindForegroundToProperty
  */
 
-fun Control.bindForegroundToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindForegroundToModel(model: Any, propertyName: String): ControlBinding =
         this.bindForeground<ControlBuilder, Any, Any>(ObservableProperty<Any>(model, propertyName))
 
-infix fun Control.bindForegroundTo(propertyName: String): Binding<*, Control, ControlBuilder> =
+infix fun Control.bindForegroundTo(propertyName: String): ControlBinding =
         this.bindForegroundToProperty<ControlBuilder, Any, Any>(propertyName)
 
 fun Control.bindColorToModel(model: Any, propertyName: String) =
@@ -91,10 +91,10 @@ infix fun Control.bindColorTo(propertyName: String) =
  *  - bindValueToProperty
  */
 
-fun Control.bindToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindToModel(model: Any, propertyName: String): ControlBinding =
         this.bindValue<Any, ControlBuilder>(ObservableProperty(model, propertyName))
 
-infix fun Control.bindTo(propertyName: String): Binding<*, Control, ControlBuilder> =
+infix fun Control.bindTo(propertyName: String): ControlBinding =
         this.bindValueToProperty<Any, ControlBuilder>(propertyName)
 
 /**
@@ -103,10 +103,10 @@ infix fun Control.bindTo(propertyName: String): Binding<*, Control, ControlBuild
  *  - bindVisibleToProperty
  */
 
-fun Control.bindVisibleToModel(model: Any, propertyName: String): Binding<*, Control, ControlBuilder> =
+fun Control.bindVisibleToModel(model: Any, propertyName: String): ControlBinding =
         this.bindVisible<ControlBuilder>(ObservableProperty<Any>(model, propertyName))
 
-infix fun Control.bindVisibleTo(propertyName: String): Binding<*, Control, ControlBuilder> =
+infix fun Control.bindVisibleTo(propertyName: String): ControlBinding =
         this.bindVisibleToProperty<ControlBuilder>(propertyName)
 
 

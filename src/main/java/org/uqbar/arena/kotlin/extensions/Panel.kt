@@ -34,7 +34,7 @@ fun Panel.asHorizontal(): Panel {
     return this
 }
 
-infix fun Panel.asColumns(num: Int): Panel {
-    this.layout = ColumnLayout(num)
+infix fun Panel.asColumns(amount: Int): Panel {
+    this.layout = ColumnLayout(amount)
     return this
 }

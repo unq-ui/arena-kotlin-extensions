@@ -1,34 +1,23 @@
 package examples.extensions.widgets.control.skinnableControl
 
-import org.uqbar.arena.Application
 import java.awt.Color
+import org.uqbar.arena.windows.*
+import org.uqbar.arena.Application
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.kotlin.extensions.*
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.windows.*
+import org.uqbar.arena.kotlin.extensions.*
 import org.uqbar.commons.model.annotations.Observable
 import org.uqbar.commons.model.exceptions.UserException
 
 fun main() {
     class App : Application() {
-        override fun createMainWindow(): Window<*> = ButtonExtensionsWindow(this)
+        override fun createMainWindow(): Window<*> = ButtonWithBlockWindow(this)
     }
     App().start()
 }
 
-/**
- * Button extends from SkinnableControl
- *  - inherits all common behavior from Control
- *  - inherits foreground, background & fontSize from SkinnableControl
- *  - adds
- *      + caption
- *      + onClick
- *      + setAsDefault
- *      + disableOnError
- *      + bindCaptionToProperty
- */
-class ButtonExtensionsWindow(parent: WindowOwner) : SimpleWindow<ButtonExtensionsWindow.AppModel>(parent, AppModel()) {
+class ButtonWithBlockWindow(parent: WindowOwner) : SimpleWindow<ButtonWithBlockWindow.AppModel>(parent, AppModel()) {
     override fun addActions(actionsPanel: Panel?) {}
     override fun createFormPanel(mainPanel: Panel?) {}
 

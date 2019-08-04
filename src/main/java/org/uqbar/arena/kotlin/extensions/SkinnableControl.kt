@@ -34,6 +34,13 @@ var SkinnableControl.foreground: Color
         return bgField.get(this) as Color
     }
 
+// Alias for background
+var SkinnableControl.bgColor: Color
+    get() = background
+    set(value) {
+        background = value
+    }
+
 // Alias for foreground
 var SkinnableControl.color: Color
     get() = foreground
