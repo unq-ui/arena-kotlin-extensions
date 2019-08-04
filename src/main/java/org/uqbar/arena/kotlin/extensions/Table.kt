@@ -2,6 +2,8 @@ package org.uqbar.arena.kotlin.extensions
 
 import java.awt.Color
 import org.uqbar.arena.widgets.Control
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.Widget
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.labelprovider.BackgroundProvider
@@ -10,6 +12,24 @@ import org.uqbar.arena.widgets.tables.labelprovider.PropertyLabelProvider
 import org.uqbar.lacar.ui.model.ControlBuilder
 import org.uqbar.lacar.ui.model.TableBuilder
 import org.uqbar.lacar.ui.model.bindings.Binding
+
+/**
+ * Builder to write code as block:
+ *
+ *     newTable<Item>(mainPanel) { ... }
+ */
+inline fun <reified T> newTable(panel: Panel, noinline block: Table<T>.(Table<T>) -> Unit): Table<T> {
+    return Table(panel, T::class.java) with block
+}
+
+/**
+ * Builder to write code as block and with "with" (like components extensions):
+ *
+ *     newTable<Item>(mainPanel) with { ... }
+ */
+inline fun <reified T> newTable(panel: Panel): Table<T> {
+    return Table(panel, T::class.java)
+}
 
 /**
  * Binding Items
@@ -35,6 +55,12 @@ var Table<*>.visibleRows: Int
     }
 
 /**
+ * Columns constructor inside Table block
+ */
+
+infix fun <T> Table<T>.column(block: Column<T>.(Column<T>) -> Unit) = Column(this) with block
+
+/**
  * No needed
  *  - addColumn
  *  - setItemType
@@ -45,6 +71,17 @@ var Table<*>.visibleRows: Int
 /**
  * Column
  */
+
+/**
+ * Functions to use component as Block
+ */
+
+infix fun <T> Column<T>.with(block: Column<T>.(Column<T>) -> Unit): Column<T> {
+    this.block(this)
+    return this
+}
+infix fun <T> Column<T>.props(block: Column<T>.(Column<T>) -> Unit): Column<T>   = with(block)
+
 
 var Column<*>.title: String?
     get() = null

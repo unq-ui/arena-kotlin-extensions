@@ -1,10 +1,9 @@
 package org.uqbar.arena.kotlin.extensions
 
+import java.lang.reflect.Field
 import org.uqbar.arena.widgets.Link
 import org.uqbar.lacar.ui.model.ButtonBuilder
 import org.uqbar.lacar.ui.model.bindings.Binding
-import java.lang.reflect.Field
-import java.lang.reflect.Method
 
 /**
  * Caption (making it public)
@@ -14,7 +13,7 @@ import java.lang.reflect.Method
 
 val linkCaptionField: Field = Link::class.java.getDeclaredField("caption")
 
-var Link.text: String
+var Link.caption: String
     set(value) {
         this.setCaption(value)
     }
@@ -22,6 +21,13 @@ var Link.text: String
         linkCaptionField.isAccessible = true
         return linkCaptionField.get(this) as String
     }
+
+// Alias for content
+var Link.text: String
+    set(value) {
+        caption = value
+    }
+    get() = caption
 
 /**
  * Binding
