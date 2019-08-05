@@ -1,10 +1,11 @@
 package examples.extensions.widgets
 
-import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.widgets.GroupPanel
 import org.uqbar.arena.kotlin.extensions.*
+import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.commons.model.annotations.Observable
 
 fun main () = PanelWindow().startApplication()
@@ -34,7 +35,8 @@ class PanelWindow : MainWindow<PanelWindow.AppModel>(AppModel()) {
 
         }
 
-        Panel(mainPanel) with {
+        GroupPanel(mainPanel) with {
+            title = "Group Panel"
             asHorizontal()
             Label(it) with { text = "Label H1-1" }
             Label(it) with { text = "Label H1-2" }

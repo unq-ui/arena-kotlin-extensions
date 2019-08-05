@@ -4,6 +4,7 @@ import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.Layout
 import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.GroupPanel
 import org.uqbar.arena.widgets.Panel
 import java.lang.reflect.Field
 
@@ -38,3 +39,18 @@ infix fun Panel.asColumns(amount: Int): Panel {
     this.layout = ColumnLayout(amount)
     return this
 }
+
+/**
+ * Group Panel
+ */
+
+val groupPanelTitleField: Field = GroupPanel::class.java.getDeclaredField("title")
+
+var GroupPanel.title: String
+    set(value) {
+        this.setTitle(value)
+    }
+    get() {
+        groupPanelTitleField.isAccessible = true
+        return groupPanelTitleField.get(this) as String
+    }
