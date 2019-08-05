@@ -11,7 +11,7 @@
 
 This package allows you to use Arena with Kotlin in a more pleasant way.
 
-It provides some extensions that take advantage of Kotlin's functions,
+It provides some extensions that take advantage of Kotlin's functionality,
 as well as the possibility of [extending the classes](https://kotlinlang.org/docs/reference/extensions.html)
 and [high order functions](https://kotlinlang.org/docs/reference/lambdas.html).
 
@@ -57,13 +57,13 @@ You need to add this code to your `pom.xml`
 ## How to use
 
 > **Important:** You always have to add this import:
->
-> `import org.uqbar.arena.kotlin.extensions.*`
+
+`import org.uqbar.arena.kotlin.extensions.*`
 
 ### Quick Start
 
 ```kt
-package examples.extensions.widgets.control
+package examples
 
 import java.awt.Color
 import org.uqbar.arena.widgets.*
