@@ -1,9 +1,9 @@
 package examples.extensions.widgets.control
 
-import org.uqbar.arena.kotlin.extensions.width
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.widgets.Spinner
+import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.kotlin.extensions.*
 import org.uqbar.commons.model.annotations.Observable
 
 fun main () = SpinnerExtensionsWindow().startApplication()
@@ -20,10 +20,11 @@ class SpinnerExtensionsWindow : MainWindow<SpinnerExtensionsWindow.AppModel>(App
     override fun createContents(mainPanel: Panel) {
         title = "Spinner Extension Window"
 
-        val spinner = Spinner(mainPanel)
-        spinner.maximumValue = 10
-        spinner.minimumValue = 2
-        spinner.width = 50
+        Spinner(mainPanel) with {
+            width = 50
+            minValue = 2
+            maxValue = 10
+        }
     }
 
 }

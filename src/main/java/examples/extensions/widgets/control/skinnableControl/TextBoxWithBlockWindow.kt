@@ -35,6 +35,13 @@ class TextBoxWindow : MainWindow<TextBoxWindow.AppModel>(AppModel()) {
             bindColorTo("blue")
         }
 
+        TextBox(mainPanel) with {
+            fontSize = 24
+            color = Color.YELLOW
+            bgColor = Color.BLUE
+            bindTo("textBoxText")
+        }
+
         TextBox(mainPanel) props {
             it.bindTo("textBoxText")
             it.bindEnabledToModel(modelObject, "disabled")
@@ -45,16 +52,20 @@ class TextBoxWindow : MainWindow<TextBoxWindow.AppModel>(AppModel()) {
             withFilter { it.inputText.toString().toLowerCase().contains("a") }
         }
 
-        NumericField(mainPanel) props {
-            isMultiLine = true
-            selectFinalLine()
-        }
+        GroupPanel(mainPanel) with {
+            title = "Numerics"
+            NumericField(it) props {
+                withDecimals = true
+                isMultiLine = true
+                selectFinalLine()
+            }
 
-        NumericField(mainPanel) with {
-            withDecimals = false
-        }
+            NumericField(it) with {
+                withDecimals = false
+            }
 
-        NumericField(mainPanel)
+            NumericField(it)
+        }
 
         KeyWordTextArea(mainPanel) with {
             keyWords("foo", "bar")

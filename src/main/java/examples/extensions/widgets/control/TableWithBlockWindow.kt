@@ -42,13 +42,13 @@ class TableWindow : MainWindow<TableWindow.AppModel>(AppModel()) {
     override fun createContents(mainPanel: Panel) {
         title = "Table Window"
 
-        newTable<Item>(mainPanel) with {
+        table<Item>(mainPanel) with {
             it bindItemsTo "items"
             it bindSelectionTo "selected"
             visibleRows = 5
         }
 
-        newTable<Item>(mainPanel) {
+        table<Item>(mainPanel) {
             it bindItemsTo "items"
             it bindSelectionTo "selected"
             visibleRows = 5
@@ -81,7 +81,7 @@ class TableWindow : MainWindow<TableWindow.AppModel>(AppModel()) {
         }
 
 
-        newTable<Item>(mainPanel) {
+        table<Item>(mainPanel) {
             it bindItemsTo "items"
             it bindSelectionTo "selected"
             visibleRows = 5

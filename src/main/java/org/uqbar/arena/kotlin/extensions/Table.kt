@@ -16,18 +16,18 @@ import org.uqbar.lacar.ui.model.bindings.Binding
 /**
  * Builder to write code as block:
  *
- *     newTable<Item>(mainPanel) { ... }
+ *     table<Item>(mainPanel) { ... }
  */
-inline fun <reified T> newTable(panel: Panel, noinline block: Table<T>.(Table<T>) -> Unit): Table<T> {
+inline fun <reified T> table(panel: Panel, noinline block: Table<T>.(Table<T>) -> Unit): Table<T> {
     return Table(panel, T::class.java) with block
 }
 
 /**
  * Builder to write code as block and with "with" (like components extensions):
  *
- *     newTable<Item>(mainPanel) with { ... }
+ *     table<Item>(mainPanel) with { ... }
  */
-inline fun <reified T> newTable(panel: Panel): Table<T> {
+inline fun <reified T> table(panel: Panel): Table<T> {
     return Table(panel, T::class.java)
 }
 

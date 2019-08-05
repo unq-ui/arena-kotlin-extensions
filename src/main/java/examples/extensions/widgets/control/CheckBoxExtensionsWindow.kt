@@ -9,7 +9,7 @@ import org.uqbar.arena.windows.MainWindow
 import org.uqbar.commons.model.annotations.Observable
 import java.awt.Color
 
-fun main() = CheckBoxExtensionsWindows().startApplication()
+fun main() = CheckBoxExtensionsWindow().startApplication()
 
 
 /**
@@ -18,7 +18,7 @@ fun main() = CheckBoxExtensionsWindows().startApplication()
  *  - doesn't add any functionality
  *  - bind value need a boolean property and makes selected/unselected
  */
-class CheckBoxExtensionsWindows : MainWindow<CheckBoxExtensionsWindows.AppModel>(AppModel()) {
+class CheckBoxExtensionsWindow : MainWindow<CheckBoxExtensionsWindow.AppModel>(AppModel()) {
     @Observable class AppModel {
         var selected = true
         var unselected = false

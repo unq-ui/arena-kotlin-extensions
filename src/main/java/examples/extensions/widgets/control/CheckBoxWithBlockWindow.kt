@@ -9,7 +9,7 @@ import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.kotlin.extensions.*
 import org.uqbar.commons.model.annotations.Observable
 
-fun main() = CheckBoxWindows().startApplication()
+fun main() = CheckBoxWithBlockWindow().startApplication()
 
 
 /**
@@ -18,7 +18,7 @@ fun main() = CheckBoxWindows().startApplication()
  *  - doesn't add any functionality
  *  - bind value need a boolean property and makes selected/unselected
  */
-class CheckBoxWindows : MainWindow<CheckBoxWindows.AppModel>(AppModel()) {
+class CheckBoxWithBlockWindow : MainWindow<CheckBoxWithBlockWindow.AppModel>(AppModel()) {
     @Suppress("unused") @Observable class AppModel {
         var selected = true
         var unselected = false
