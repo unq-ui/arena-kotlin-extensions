@@ -17,41 +17,23 @@ and [high order functions](https://kotlinlang.org/docs/reference/lambdas.html).
 
 ## Dependency
 
-You need to add this code to your `pom.xml`
+In your `pom.xml`, you need to add this to `repositories`
 
 ```xml
-<!-- ... project definition ... -->
+<repository>
+  <id>jitpack.io</id>
+  <url>https://jitpack.io</url>
+</repository>
+```
 
-<repositories>
-  <repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-  </repository>
-  <repository>
-    <id>uqbar</id>
-    <name>Uqbar</name>
-    <url>http://maven.uqbar.org/releases/</url>
-  </repository>
-</repositories>
+And this to `dependencies`
 
-<parent>
-  <groupId>org.uqbar-project</groupId>
-  <artifactId>arena-xtend-parent</artifactId>
-  <version>3.6.3</version>
-</parent>
-
-<!-- ... your stuff ... -->
-
-<dependencies>
-  <dependency>
-    <groupId>com.github.unq-ui</groupId>
-    <artifactId>arena-kotlin-extensions</artifactId>
-    <version>1.2.1</version>
-  </dependency>
-  <!-- ... others dependencies ... -->
-</dependencies>
-
-<!-- ... the rest of pom ... -->
+```xml
+<dependency>
+  <groupId>com.github.unq-ui</groupId>
+  <artifactId>arena-kotlin-extensions</artifactId>
+  <version>1.3.0</version>
+</dependency>
 ```
 
 ## How to use
@@ -160,7 +142,7 @@ NumericField(mainPanel) with {
 ##### Password Fields
 
 ```kt
-PasswordField(mainPanel) props {
+PasswordField(mainPanel) with {
   bindTo("password")
   fontSize = 20
 }
@@ -295,7 +277,7 @@ FileSelector(mainPanel) with {
   extensions("*.txt", "*.png")  // Extensions allowed
 }
 
-FileSelector(mainPanel) props {
+FileSelector(mainPanel) with {
   path = "/home"
   setAsDefault()
   bindTo("storage")
@@ -349,8 +331,8 @@ Panel(mainPanel) with {
 
 Panel(mainPanel) with {
   asHorizontal()
-  Label(it) props { text = "Label H1-1" }
-  Label(it) props { text = "Label H1-2" }
+  Label(it) with { text = "Label H1-1" }
+  Label(it) with { text = "Label H1-2" }
 }
 
 Panel(mainPanel) with {
