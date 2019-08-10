@@ -12,11 +12,19 @@ infix fun <T: Window<*>> T.with(block: T.(T) -> Unit): T {
 }
 infix fun <T: Window<*>> T.props(block: T.(T) -> Unit): T = with(block)
 
-// When components or Windows are written with blocks
-// we can't use `this` to reference parent window.
+// When Widgets or Windows are written with blocks
+// they can't use `this` to reference parent window
+// because context has changes.
 // Example:
-//  - `Dialog(this, modelObject)`       # Does not work because `this` references to `Dialog`
-//  - `Dialog(thisWindow, modelObject)` # Works
-var Window<*>.thisWindow
+//  # This code does not work because `this` references to `Dialog`, not to `Window`
+//  Button with {
+//      Dialog(this, modelObject)
+//  }
+//
+//  # This code works
+//  Button with {
+//      Dialog(thisWindow, modelObject)
+//  }
+var <T: Window<*>> T.thisWindow
     get() = this
     private set(_) = throw IllegalStateException("Override this property is not allowed.")
