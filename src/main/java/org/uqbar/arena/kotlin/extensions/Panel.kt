@@ -1,12 +1,12 @@
 package org.uqbar.arena.kotlin.extensions
 
-import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.layout.Layout
-import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.widgets.GroupPanel
-import org.uqbar.arena.widgets.Panel
 import java.lang.reflect.Field
+import org.uqbar.arena.layout.Layout
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.GroupPanel
+import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.layout.HorizontalLayout
 
 /**
  * Caption (making it public)

@@ -1,17 +1,16 @@
 package org.uqbar.arena.kotlin.extensions
 
 import java.awt.Color
-import org.uqbar.arena.widgets.Control
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Widget
+import org.uqbar.arena.widgets.Control
 import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.lacar.ui.model.TableBuilder
 import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.lacar.ui.model.ControlBuilder
+import org.uqbar.lacar.ui.model.bindings.Binding
 import org.uqbar.arena.widgets.tables.labelprovider.BackgroundProvider
 import org.uqbar.arena.widgets.tables.labelprovider.ForegroundProvider
 import org.uqbar.arena.widgets.tables.labelprovider.PropertyLabelProvider
-import org.uqbar.lacar.ui.model.ControlBuilder
-import org.uqbar.lacar.ui.model.TableBuilder
-import org.uqbar.lacar.ui.model.bindings.Binding
 
 /**
  * Builder to write code as block:
@@ -41,7 +40,7 @@ infix fun Table<*>.bindItemsTo(propertyName: String): Binding<out MutableCollect
         this.bindItemsToProperty(propertyName)
 
 infix fun Table<*>.bindSelectionTo(propertyName: String): Binding<*, Control, ControlBuilder> =
-        this.bindSelectionToProperty<ControlBuilder>(propertyName)
+        this.bindSelectionToProperty(propertyName)
 
 /**
  * Accessors

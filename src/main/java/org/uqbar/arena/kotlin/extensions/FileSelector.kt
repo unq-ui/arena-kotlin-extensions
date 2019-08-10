@@ -3,8 +3,6 @@ package org.uqbar.arena.kotlin.extensions
 import java.lang.reflect.Field
 import org.uqbar.arena.widgets.FileSelector
 
-import org.uqbar.lacar.ui.model.bindings.Binding
-
 /**
  * Attributes
  *  - path

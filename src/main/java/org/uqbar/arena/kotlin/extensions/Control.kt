@@ -104,10 +104,10 @@ infix fun Control.bindTo(propertyName: String): ControlBinding =
  */
 
 fun Control.bindVisibleToModel(model: Any, propertyName: String): ControlBinding =
-        this.bindVisible<ControlBuilder>(ObservableProperty<Any>(model, propertyName))
+        this.bindVisible(ObservableProperty<Any>(model, propertyName))
 
 infix fun Control.bindVisibleTo(propertyName: String): ControlBinding =
-        this.bindVisibleToProperty<ControlBuilder>(propertyName)
+        this.bindVisibleToProperty(propertyName)
 
 
 /**
