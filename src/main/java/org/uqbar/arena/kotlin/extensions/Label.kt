@@ -42,3 +42,12 @@ fun Label.bindImageToModel(model: Any, propertyName: String): Binding<Any, Label
             ViewObservables.observableImage<Label, String>(this, { prop -> Image(prop) })
     )
 }
+
+/**
+ * alias to make "Texted" Labels simplest
+ */
+
+infix fun Label.withText(text: String): Label {
+    this.text = text
+    return this
+}

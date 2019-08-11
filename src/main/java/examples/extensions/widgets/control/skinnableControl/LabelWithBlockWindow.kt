@@ -29,9 +29,7 @@ class LabelWithBlockWindow : MainWindow<LabelWithBlockWindow.AppModel>(AppModel(
     override fun createContents(mainPanel: Panel) {
         title = "Label With Block Window"
 
-        Label(mainPanel) with {
-            text = "Arena Framework by Uqbar"
-        }
+        Label(mainPanel) withText "Arena Framework by Uqbar"
 
         Label(mainPanel) with {
             bindImageTo("image")
