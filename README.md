@@ -1,4 +1,5 @@
-[![](https://jitpack.io/v/unq-ui/arena-kotlin-extensions.svg)](https://jitpack.io/#unq-ui/arena-kotlin-extensions)
+[![Build Status](https://travis-ci.org/unq-ui/arena-kotlin-extensions.svg?branch=master)](https://travis-ci.org/unq-ui/arena-kotlin-extensions)
+[![JitPack](https://jitpack.io/v/unq-ui/arena-kotlin-extensions.svg)](https://jitpack.io/#unq-ui/arena-kotlin-extensions)
 
 # Kotlin Extensions for Arena Framework
 
