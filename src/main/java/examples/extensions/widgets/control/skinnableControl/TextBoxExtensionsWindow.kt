@@ -2,11 +2,13 @@ package examples.extensions.widgets.control.skinnableControl
 
 import org.uqbar.arena.windows.MainWindow
 
-import org.uqbar.arena.kotlin.extensions.*
-import org.uqbar.arena.widgets.*
-import org.uqbar.arena.windows.ErrorsPanel
-import org.uqbar.commons.model.annotations.Observable
 import java.awt.Color
+import java.time.LocalDate
+import org.uqbar.arena.widgets.*
+import org.uqbar.arena.kotlin.extensions.*
+import org.uqbar.arena.windows.ErrorsPanel
+import org.uqbar.arena.kotlin.transformers.LocalDateTransformer
+import org.uqbar.commons.model.annotations.Observable
 
 fun main () = TextBoxExtensionsWindow().startApplication()
 
@@ -25,6 +27,7 @@ class TextBoxExtensionsWindow : MainWindow<TextBoxExtensionsWindow.AppModel>(App
         var disabled: Boolean = false
         var orange: Color = Color.ORANGE
         var blue: Color = Color.blue
+        var date: LocalDate = LocalDate.now()
     }
     override fun createContents(mainPanel: Panel) {
         title = "Ejemplo de Extensiones para abstract class Control"
@@ -34,6 +37,9 @@ class TextBoxExtensionsWindow : MainWindow<TextBoxExtensionsWindow.AppModel>(App
         textBox1.bindTo("textBoxText")
         textBox1.bindEnabledTo("enabled")
         textBox1.bindColorTo("blue")
+
+        val dateBox = TextBox(mainPanel)
+        dateBox.bindTo("date").setTransformer(LocalDateTransformer())
 
         val textBox2 = TextBox(mainPanel)
         textBox2.bindTo("textBoxText")
