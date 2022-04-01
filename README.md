@@ -37,6 +37,46 @@ And this to `dependencies`
 </dependency>
 ```
 
+Since Maven version 3.8.1 http repos do not work anymore, and we need to add a few mirrors in order to be able to download the dependencies.
+
+Add a `maven.config` file in your project (and configure your IDE to use it) with the following contents:
+
+```xml
+--settings ./.mvn/local-settings.xml
+```
+
+Then add a `local-settings.xml` file with the following contents:
+
+```xml
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd">
+    <mirrors>
+        <mirror>
+            <id>uqbar-mirror</id>
+            <mirrorOf>uqbar</mirrorOf>
+            <name/>
+            <url>http://maven.uqbar.org/releases/</url>
+            <blocked>false</blocked>
+        </mirror>
+        <mirror>
+            <id>uqbar-wiki.org-releases-mirror</id>
+            <mirrorOf>uqbar-wiki.org-releases</mirrorOf>
+            <name />
+            <url>http://uqbar-wiki.org/mvn/releases</url>
+            <blocked>false</blocked>
+        </mirror>
+        <mirror>
+            <id>uqbar-wiki.org-snapshots-mirror</id>
+            <mirrorOf>uqbar-wiki.org-snapshots</mirrorOf>
+            <name />
+            <url>http://uqbar-wiki.org/mvn/snapshots</url>
+            <blocked>false</blocked>
+        </mirror>
+    </mirrors>
+</settings>
+```
+
 ## How to use
 
 > **Important:** You always have to add this import:
